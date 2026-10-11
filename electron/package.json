@@ -1,0 +1,71 @@
+{
+  "name": "media-player",
+  "productName": "MediaPlayer",
+  "version": "1.0.0",
+  "description": "MediaPlayer - offline music player: 12 own synthesized songs, your files, playlist, 10-band equalizer, visualizer",
+  "main": "main.js",
+  "author": "ALEXalesha",
+  "license": "MIT",
+  "homepage": "https://alexalesha.github.io/MediaPlayer/",
+  "private": true,
+  "build": {
+    "appId": "com.alexalesha.mediaplayer",
+    "productName": "MediaPlayer",
+    "copyright": "Copyright (c) 2026 ALEXalesha",
+    "electronVersion": "44.4.5",
+    "directories": {
+      "output": "dist",
+      "buildResources": "."
+    },
+    "files": [
+      "main.js",
+      "window-state.js",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../index.html",
+        "to": "web/index.html"
+      }
+    ],
+    "electronLanguages": [
+      "ru",
+      "en-US"
+    ],
+    "compression": "maximum",
+    "win": {
+      "icon": "icon.ico",
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "artifactName": "MediaPlayer-${version}-Setup.${ext}",
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "MediaPlayer",
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "installerHeaderIcon": "icon.ico"
+    },
+    "portable": {
+      "artifactName": "MediaPlayer-${version}-Portable.${ext}"
+    },
+    "publish": null
+  }
+}
