@@ -7,7 +7,7 @@
 // тот же модуль, что у калькуляторов, Paint Pro и Игротеки), в заголовке - версия, сеть
 // закрыта (страница работает без неё), ссылки и новые окна не открываются.
 //
-// Режим проверок (MP_TEST=1): окно не показывается вовсе и не берёт фокус - прогон не
+// Режим проверок (MP_TEST=1): окно не показывается вовсе, не берёт фокус и молчит - прогон не
 // мешает человеку за этим компьютером. Папку данных проверки задают своим
 // --user-data-dir, чтобы не трогать настоящий файл окна и настройки.
 'use strict';
@@ -64,6 +64,8 @@ function createWindow() {
   win.webContents.on('will-navigate', (e, url) => { if (url !== win.webContents.getURL()) e.preventDefault(); });
   win.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
 
+  // В проверке звук не идёт в колонки
+  if (TEST) win.webContents.setAudioMuted(true);
   win.loadFile(PAGE);
   if (placed.maximized && !TEST) win.maximize();
   if (!TEST) win.once('ready-to-show', () => win.show());
