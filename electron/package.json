@@ -1,7 +1,7 @@
 {
   "name": "media-player",
   "productName": "MediaPlayer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MediaPlayer - offline music player: 12 own synthesized songs, your files, playlist, 10-band equalizer, visualizer",
   "main": "main.js",
   "author": "ALEXalesha",
