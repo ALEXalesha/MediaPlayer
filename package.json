@@ -1,0 +1,26 @@
+{
+  "name": "mediaplayer",
+  "version": "1.0.1",
+  "private": true,
+  "description": "MediaPlayer: offline music player in one HTML page - 12 own synthesized songs, your audio and video files, playlist, 10-band equalizer, visualizer, Media Session; Electron app for Windows",
+  "author": "ALEXalesha",
+  "license": "MIT",
+  "homepage": "https://alexalesha.github.io/MediaPlayer/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ALEXalesha/MediaPlayer.git"
+  },
+  "scripts": {
+    "start": "electron electron",
+    "dist": "electron-builder --projectDir electron --win nsis portable --x64",
+    "test": "playwright test",
+    "mutate": "node tests/mutate.js",
+    "screenshots": "node tools/screenshots.js",
+    "icon": "node electron/make-icon.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "electron": "44.4.5",
+    "electron-builder": "26.15.3"
+  }
+}
