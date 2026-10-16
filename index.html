@@ -212,6 +212,8 @@ select option { background: var(--app-base); color: var(--text); }
 .item { display: flex; align-items: center; gap: 9px; padding: 5px 6px; border-radius: 10px; cursor: default; border: 1px solid transparent; user-select: none; }
 .item:hover { background: var(--glass-bg-soft); }
 .item.current { background: var(--glass-bg-strong); border-color: var(--glass-border); }
+/* рамка фокуса строки внутри строки: снаружи её срезал край прокручиваемого списка (слева, у первой строки сверху) */
+.item:focus-visible { outline-offset: -2px; }
 .item.current .title { color: var(--accent); font-weight: 600; }
 :root[data-theme="light"] .item.current .title { color: var(--accent); }
 .item.drop-before { box-shadow: inset 0 2px 0 var(--accent); }
@@ -276,7 +278,7 @@ body.mini .transport #play { width: 46px; height: 46px; }
       <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="bg-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--accent)"/><stop offset="1" stop-color="var(--accent-2)"/></linearGradient></defs><rect x="4" y="4" width="56" height="56" rx="16" fill="url(#bg-g)"/><path d="M26 18v22.5a7 7 0 1 0 4 6.3V27l14-3.5v12a7 7 0 1 0 4 6.3V13z" fill="#fff"/></svg>
       <div><h1 data-i18n="title">Медиаплеер</h1><small data-i18n="subtitle">Своя музыка и ваши файлы, без интернета</small></div>
     </div>
-    <button class="btn" id="open-files"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8z"/></svg><span data-i18n="open">Открыть файлы</span></button>
+    <button class="btn" id="open-files" data-i18n-title="open" title="Открыть файлы"><svg viewBox="0 0 24 24"><path d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8z"/></svg><span data-i18n="open">Открыть файлы</span></button>
     <input type="file" id="file-input" multiple accept="audio/*,video/*,.mp3,.ogg,.oga,.opus,.wav,.flac,.m4a,.aac,.mp4,.m4v,.webm" hidden>
     <button class="btn icon-btn" id="mini" aria-pressed="false" data-i18n-title="mini" title="Мини-режим"><svg viewBox="0 0 24 24"><path d="M3 5h18v14H3zm2 2v10h14V7zm6 5h7v4h-7z"/></svg></button>
     <button class="btn" id="ui-lang" data-i18n-title="language" title="Язык интерфейса">EN</button>
@@ -350,7 +352,7 @@ body.mini .transport #play { width: 46px; height: 46px; }
 <div id="drop-overlay" hidden><span data-i18n="dropNow">Отпустите файлы - они встанут в плейлист</span></div>
 <script>
 'use strict';
-const VERSION = '1.0.2';
+const VERSION = '1.0.3';
 // Какая полоса прокрутки: классическая занимает место (ширина > 0), overlay - нет (ширина 0)
 const overlayScrollbars = () => { const d = document.createElement('div'); d.style.cssText = 'position:absolute;left:-999px;top:0;width:80px;height:80px;overflow:scroll'; document.body.appendChild(d); const w = d.offsetWidth - d.clientWidth; d.remove(); return w === 0; };
 document.documentElement.classList.toggle('overlay-sb', overlayScrollbars());
@@ -2231,6 +2233,8 @@ function onKey(e) {
   const tag = t && t.tagName;
   if (e.ctrlKey || e.metaKey) return;
   if (tag === 'SELECT' || tag === 'TEXTAREA' || (tag === 'INPUT' && t.type !== 'range') || (t && t.isContentEditable)) return;
+  // стрелки на ползунке громкости или полосы эквалайзера двигают сам ползунок (не перемотку и не общую громкость)
+  if (tag === 'INPUT' && t.id !== 'seek' && /^(Arrow|Page|Home|End)/.test(e.code)) return;
   const row = t && t.classList && t.classList.contains('item') ? t : null;
   if (row && e.altKey && (e.code === 'ArrowUp' || e.code === 'ArrowDown')) {
     e.preventDefault();
