@@ -352,7 +352,7 @@ body.mini .transport #play { width: 46px; height: 46px; }
 <div id="drop-overlay" hidden><span data-i18n="dropNow">Отпустите файлы - они встанут в плейлист</span></div>
 <script>
 'use strict';
-const VERSION = '1.0.3';
+const VERSION = '1.0.4';
 // Какая полоса прокрутки: классическая занимает место (ширина > 0), overlay - нет (ширина 0)
 const overlayScrollbars = () => { const d = document.createElement('div'); d.style.cssText = 'position:absolute;left:-999px;top:0;width:80px;height:80px;overflow:scroll'; document.body.appendChild(d); const w = d.offsetWidth - d.clientWidth; d.remove(); return w === 0; };
 document.documentElement.classList.toggle('overlay-sb', overlayScrollbars());
@@ -2277,6 +2277,28 @@ Session.init();
 Session.meta(player.current());
 setInterval(() => { player.frame(); if (!UI.seeking) UI.update(); }, 100);
 requestAnimationFrame(Viz.loop);
+
+// Плеер во вкладке Хаба (и в окне демо систем): ушли с вкладки - пауза, вернулись - играет
+// дальше, если паузу поставил уход (до 1.0.4 фоновая вкладка только молчала, а песня шла).
+// Браузерный Хаб и демо шлют рамке {mix: 'pause' | 'resume'} (web/_os-shared/README.md),
+// приложение Хаба - самой странице {hub: ...}. Без Хаба фон музыку не прерывает: отдельная
+// вкладка браузера и своя программа плеера играют и свёрнутыми.
+const HubTab = (() => {
+  let paused = false;
+  window.addEventListener('message', (e) => {
+    const d = e.data;
+    if (!d || typeof d !== 'object') return;
+    // why: 'page' - скрыли всю страницу Хаба (вкладку браузера), а не ушли с вкладки плеера
+    const m = e.source === window ? d.hub : (e.source === window.parent && window.parent !== window && d.why !== 'page' ? d.mix : undefined);
+    if (m === 'pause') {
+      if (player.state().playing) { paused = true; player.pause(); }
+    } else if (m === 'resume') {
+      if (paused && !player.state().playing) player.play();
+      paused = false;
+    }
+  });
+  return { get paused() { return paused; } };
+})();
 
 // Для проверок (tests/web/media-player.spec.js) и для оболочки Electron
 window.__mp = {
