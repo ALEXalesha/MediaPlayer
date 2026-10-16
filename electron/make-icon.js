@@ -2,7 +2,7 @@
 //   node web/media-player/electron/make-icon.js
 // Рисует Chromium (Playwright, без окна). Для 16-32 px клавиши без мелких кнопок, иначе
 // в панели задач вместо клавиатуры была бы каша из точек. Кадры до 64 px - BMP, 128 и
-// 256 - PNG (так же делает tools/make-icon.js Игротеки).
+// 256 - PNG (так же делает tools/make-icon.js Хаба).
 'use strict';
 
 const path = require('path');
