@@ -1,12 +1,14 @@
 <div align="center">
 
+<img src="electron/icon.png" width="96" alt="">
+
 # MediaPlayer
 
 **MediaPlayer («Медиаплеер») is a music and video player in a single HTML page. It comes with its own album of 12 songs that are not files at all: a small song generator writes each score (melody, chords, bass, drums) and the browser plays it through Web Audio. It works with no server and no internet: open `index.html`, use it online, or install the Windows app.**
 
 [**▶ Try it online →**](https://alexalesha.github.io/MediaPlayer/) &nbsp;·&nbsp; [Download for Windows](https://github.com/ALEXalesha/MediaPlayer/releases/latest) &nbsp;·&nbsp; [Русская версия этого файла](README.ru.md)
 
-[![Status](https://img.shields.io/badge/status-stable-brightgreen)](#) [![Release](https://img.shields.io/github/v/release/ALEXalesha/MediaPlayer)](https://github.com/ALEXalesha/MediaPlayer/releases/latest) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML) [![Electron](https://img.shields.io/badge/Electron-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/) [![Website](https://img.shields.io/badge/Website-open-0A84FF?logo=googlechrome&logoColor=white)](https://alexalesha.github.io/MediaPlayer/) [![Built with Claude Code](https://img.shields.io/badge/Built_with-Claude_Code-D97757?logo=claude&logoColor=white)](https://claude.com/claude-code)
+[![Status](https://img.shields.io/badge/status-stable-brightgreen)](#) [![Release](https://img.shields.io/github/v/release/ALEXalesha/MediaPlayer)](https://github.com/ALEXalesha/MediaPlayer/releases/latest) [![CI](https://github.com/ALEXalesha/MediaPlayer/actions/workflows/ci.yml/badge.svg)](https://github.com/ALEXalesha/MediaPlayer/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML) [![Electron](https://img.shields.io/badge/Electron-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/) [![Website](https://img.shields.io/badge/Website-open-0A84FF?logo=googlechrome&logoColor=white)](https://alexalesha.github.io/MediaPlayer/) [![Built with Claude Code](https://img.shields.io/badge/Built_with-Claude_Code-D97757?logo=claude&logoColor=white)](https://claude.com/claude-code)
 
 Code, tests and docs are written by Claude (Anthropic) in Claude Code. Ideas, testing and decisions - Alexey.
 

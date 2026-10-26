@@ -1,12 +1,14 @@
 <div align="center">
 
+<img src="electron/icon.png" width="96" alt="">
+
 # Медиаплеер
 
 **Медиаплеер (MediaPlayer) - плеер музыки и видео в одной HTML-странице. В нём свой альбом из 12 мелодий, которые вовсе не файлы: небольшой генератор песен пишет каждую партитуру (мелодия, аккорды, бас, ударные), а браузер играет её через Web Audio. Работает без сервера и без интернета: откройте `index.html`, пользуйтесь на сайте или поставьте программу для Windows.**
 
 [**▶ Открыть на сайте →**](https://alexalesha.github.io/MediaPlayer/) &nbsp;·&nbsp; [Скачать для Windows](https://github.com/ALEXalesha/MediaPlayer/releases/latest) &nbsp;·&nbsp; [English version of this file](README.md)
 
-[![Status](https://img.shields.io/badge/status-stable-brightgreen)](#) [![Release](https://img.shields.io/github/v/release/ALEXalesha/MediaPlayer)](https://github.com/ALEXalesha/MediaPlayer/releases/latest) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML) [![Electron](https://img.shields.io/badge/Electron-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/) [![Website](https://img.shields.io/badge/Website-open-0A84FF?logo=googlechrome&logoColor=white)](https://alexalesha.github.io/MediaPlayer/) [![Built with Claude Code](https://img.shields.io/badge/Built_with-Claude_Code-D97757?logo=claude&logoColor=white)](https://claude.com/claude-code)
+[![Status](https://img.shields.io/badge/status-stable-brightgreen)](#) [![Release](https://img.shields.io/github/v/release/ALEXalesha/MediaPlayer)](https://github.com/ALEXalesha/MediaPlayer/releases/latest) [![CI](https://github.com/ALEXalesha/MediaPlayer/actions/workflows/ci.yml/badge.svg)](https://github.com/ALEXalesha/MediaPlayer/actions/workflows/ci.yml) [![License](https://img.shields.io/badge/license-MIT-blue)](LICENSE) [![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)](https://developer.mozilla.org/docs/Web/HTML) [![Electron](https://img.shields.io/badge/Electron-47848F?logo=electron&logoColor=white)](https://www.electronjs.org/) [![Website](https://img.shields.io/badge/Website-open-0A84FF?logo=googlechrome&logoColor=white)](https://alexalesha.github.io/MediaPlayer/) [![Built with Claude Code](https://img.shields.io/badge/Built_with-Claude_Code-D97757?logo=claude&logoColor=white)](https://claude.com/claude-code)
 
 Код, тесты и документация этого проекта написаны Claude (Anthropic) в Claude Code. Идеи, проверка и решения - Алексей.
 
